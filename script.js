@@ -4,7 +4,10 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    let gameOutcome = {};
+    const gameOutcome = {
+		text: "",
+		winner: "",
+	};
     // TODO logic that compares playerSelection to computerSelection
 	if (playerSelection == computerSelection) {
 		gameOutcome.text = "The round is a draw! You both picked " + playerSelection;
@@ -14,32 +17,27 @@ function playRound(playerSelection, computerSelection) {
 			case "Rock":
 				if (computerSelection == "Paper") {
 					gameOutcome.winner = "computer";
-					break;
 				}
-				gameOutcome.winner = "player";
 				break;
 			case "Paper":
 				if (computerSelection == "Scissors") {
 					gameOutcome.winner = "computer";
-					break;
 				}	
-				gameOutcome.winner = "player";
 				break;
 			case "Scissors":
 				if (computerSelection == "Rock") {
 					gameOutcome.winner = "computer";
-					break;
 				}
-				gameOutcome.winner = "player";
 				break;
 		}
-		if (gameOutcome.winner == "player") {
-			gameOutcome.text = `You won the round! ${playerSelection} beats ${computerSelection}!`
-		} else {
+		if (gameOutcome.winner == "computer") {
 			gameOutcome.text = `You lost the round! ${computerSelection} beats ${playerSelection}!`;
+		} else {
+			gameOutcome.text = `You won the round! ${playerSelection} beats ${computerSelection}!`;
+			gameOutcome.winner = "player";
 		}
 	}
-    return gameOutcome // "You Lose! Paper beats Rock", "computer"
+    return gameOutcome;
 }
 
 function game() {
@@ -48,7 +46,7 @@ function game() {
 	let playerWins = 0;
 	let computerWins = 0;
 	let draws = 0;
-	let gameLength = 4;
+	const gameLength = 4;
     for (let i = 0; i <= gameLength; i++) {
         let playerSelection = prompt(); // TODO input validation & error handling (add a timer?)
         let computerSelection = computerPlay();
