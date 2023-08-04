@@ -20,13 +20,13 @@ function playRound(playerSelection, computerSelection) {
 function displayGameResult(playerWins, computerWins) {
     if (playerWins > computerWins) {
         console.log("You win the game!");
-        console.log("Score: " + playerWins + " : " + computerWins);
+        console.log("Score " + playerWins + " : " + computerWins);
     } else if (playerWins < computerWins) {
         console.log("You lose the game!");
-        console.log("Score: " + computerWins + " : " + playerWins);
+        console.log("Score " + computerWins + " : " + playerWins);
     } else {
         console.log("It's a draw!");
-        console.log("Score: " + playerWins + " : " + computerWins);
+        console.log("Score " + playerWins + " : " + computerWins);
     }
 }
 
@@ -66,6 +66,9 @@ function game() {
             playerWins++;
         } else if (roundResult.includes('lose')) {
             // console.log("You lose this round!")
+            computerWins++;
+        } else {
+            playerWins++;
             computerWins++;
         }
     }
