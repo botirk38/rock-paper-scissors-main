@@ -1,8 +1,7 @@
 function computerPlay() {
-    const choices = ['Rock', 'Paper', 'Scissors'];
+    const choices = ['rock', 'paper', 'scissors'];
     return choices[Math.floor(Math.random() * choices.length)];
 }
-
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
@@ -18,32 +17,60 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+function displayGameResult(playerWins, computerWins) {
+    if (playerWins > computerWins) {
+        console.log("You win the game!");
+        console.log("Score: " + playerWins + " : " + computerWins);
+    } else if (playerWins < computerWins) {
+        console.log("You lose the game!");
+        console.log("Score: " + computerWins + " : " + playerWins);
+    } else {
+        console.log("It's a draw!");
+        console.log("Score: " + playerWins + " : " + computerWins);
+    }
+}
+
+function isValidChoice(choice) {
+    const validChoices = ['rock', 'paper', 'scissors'];
+    return validChoices.includes(choice.toLowerCase());
+}
+
 
 function game() {
     console.log("Welcome to the game");
-    // TODO game starts flavour text (get player name?)
+    let playerReady = prompt("Are you ready? (y/n): ").toLowerCase();
+    if (playerReady === 'n') {
+        console.log("Bye!");
+        return;
+    }
+
     let playerWins = 0;
     let computerWins = 0;
-    let draws = 0;
-    let gameLength = 4;
-    for (let i = 0; i <= gameLength; i++) {
-        let playerSelection = prompt(); // TODO input validation & error handling (add a timer?)
-        let computerSelection = computerPlay();
-        let gameOutcome, winner = playRound(playerSelection, computerSelection);
-        switch (winner) {
-            case "player":
-                playerWins++
-                break;
-            case "computer":
-                computerWins++
-                break;
-            default:
-                draws++
-                break;
+    let gameLength = 5;
+
+    for (let i = 0; i < gameLength; i++) {
+        let playerSelection = prompt("Enter rock, paper, or scissors: ").toLowerCase();
+
+        if (!isValidChoice(playerSelection)) {
+            console.log('Invalid input, try again');
+            i--;
+            continue;
         }
-        console.log(gameOutcome);
+
+        let computerSelection = computerPlay();
+        let roundResult = playRound(playerSelection, computerSelection);
+        console.log(roundResult);
+
+        if (roundResult.includes('win')) {
+            // console.log("You win this round!")
+            playerWins++;
+        } else if (roundResult.includes('lose')) {
+            // console.log("You lose this round!")
+            computerWins++;
+        }
     }
-    // TODO game end logic
+
+    displayGameResult(playerWins, computerWins);
 }
 
 game();
