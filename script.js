@@ -48,7 +48,7 @@ function getPlayerSelection() {
 
 function cancelGame () {
     console.log("%cThank you for playing! 😊","color:blue; font-weight:bold;");
-
+}
 function playAgain() {
 	let playAgainPrompt = prompt("Want to play again? y/n");
 	if (!playAgainPrompt || (playAgainPrompt.toLowerCase() !== "y" && playAgainPrompt.toLowerCase() !== "n")) {
@@ -113,7 +113,7 @@ function game() {
     console.log("--------------");
     playAgain();
 }
-}
+
 
 
 
