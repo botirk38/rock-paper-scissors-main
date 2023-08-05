@@ -22,7 +22,7 @@ function isValidChoice(choice) {
 }
 
 function playAgain() {
-	let playAgainPrompt = prompt("Want to play again? y/n"); //TODO Validation
+	let playAgainPrompt = prompt("Want to play again? y/n");
 	if (!playAgainPrompt || (playAgainPrompt.toLowerCase() !== "y" && playAgainPrompt.toLowerCase() !== "n")) {
 		console.log("%cInvalid option! Options are y(yes) or n(no).","color:red; font-weight:bold;");
 		playAgain();
@@ -51,7 +51,7 @@ function game() {
 			console.log("%c--------------","color: blue; font-weight: bold;");
 			console.log("%cRound "+ (i+1) ,"font-weight:bold;");
 		}
-        let playerSelection = prompt("Type either rock, paper, or scissors!"); // TODO input validation & error handling (add a timer?)
+        let playerSelection = prompt("Type either rock, paper, or scissors!");
 		if (!isValidChoice(playerSelection)) {
             console.log("%cInvalid option! Options are rock, paper, or scissors.","color:red; font-weight:bold;");
             i--;
