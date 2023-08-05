@@ -78,7 +78,7 @@ function game() {
         console.log("%cRound " + (i + 1), "font-weight:bold;");
         let playerSelection = getPlayerSelection();
 
-        if (playerSelection === null) return; // Exit game if player cancelled
+        if (playerSelection === null) return; // cancel game
 
         let computerSelection = computerPlay();
         console.log("Computer picked " + computerSelection);
